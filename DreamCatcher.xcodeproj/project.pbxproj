@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA120C0018F5DC3000A1932F /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA120BFC18F5DBBE00A1932F /* libCorePlot-CocoaTouch.a */; };
+		FA120C0418F5DC4100A1932F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA120C0318F5DC4100A1932F /* AVFoundation.framework */; };
+		FA120C0818F5E72800A1932F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA120C0718F5E72800A1932F /* Accelerate.framework */; };
+		FA120C0A18F5E73500A1932F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA120C0918F5E73500A1932F /* QuartzCore.framework */; };
 		FA31F01718F4C08D002FD2DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA31F01618F4C08D002FD2DB /* Foundation.framework */; };
 		FA31F01918F4C08D002FD2DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA31F01818F4C08D002FD2DB /* CoreGraphics.framework */; };
 		FA31F01B18F4C08D002FD2DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA31F01A18F4C08D002FD2DB /* UIKit.framework */; };
@@ -25,6 +29,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		FA120BFB18F5DBBE00A1932F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA120BF518F5DBBD00A1932F /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
+		FA120BFD18F5DBD100A1932F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA120BF518F5DBBD00A1932F /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BC9B83460FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
 		FA31F03C18F4C08D002FD2DB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA31F00B18F4C08C002FD2DB /* Project object */;
@@ -35,6 +53,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA120BF518F5DBBD00A1932F /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../../Downloads/CorePlot_1.5.1/Source/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
+		FA120C0318F5DC4100A1932F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		FA120C0718F5E72800A1932F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		FA120C0918F5E73500A1932F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FA31F01318F4C08D002FD2DB /* DreamCatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamCatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA31F01618F4C08D002FD2DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA31F01818F4C08D002FD2DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,6 +85,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA120C0A18F5E73500A1932F /* QuartzCore.framework in Frameworks */,
+				FA120C0818F5E72800A1932F /* Accelerate.framework in Frameworks */,
+				FA120C0418F5DC4100A1932F /* AVFoundation.framework in Frameworks */,
+				FA120C0018F5DC3000A1932F /* libCorePlot-CocoaTouch.a in Frameworks */,
 				FA31F01918F4C08D002FD2DB /* CoreGraphics.framework in Frameworks */,
 				FA31F01B18F4C08D002FD2DB /* UIKit.framework in Frameworks */,
 				FA31F01718F4C08D002FD2DB /* Foundation.framework in Frameworks */,
@@ -82,9 +108,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA120BF618F5DBBD00A1932F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA120BFC18F5DBBE00A1932F /* libCorePlot-CocoaTouch.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		FA31F00A18F4C08C002FD2DB = {
 			isa = PBXGroup;
 			children = (
+				FA120BF518F5DBBD00A1932F /* CorePlot-CocoaTouch.xcodeproj */,
 				FA31F01C18F4C08D002FD2DB /* DreamCatcher */,
 				FA31F03E18F4C08D002FD2DB /* DreamCatcherTests */,
 				FA31F01518F4C08D002FD2DB /* Frameworks */,
@@ -104,6 +139,9 @@
 		FA31F01518F4C08D002FD2DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA120C0918F5E73500A1932F /* QuartzCore.framework */,
+				FA120C0718F5E72800A1932F /* Accelerate.framework */,
+				FA120C0318F5DC4100A1932F /* AVFoundation.framework */,
 				FA31F01618F4C08D002FD2DB /* Foundation.framework */,
 				FA31F01818F4C08D002FD2DB /* CoreGraphics.framework */,
 				FA31F01A18F4C08D002FD2DB /* UIKit.framework */,
@@ -171,6 +209,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FA120BFE18F5DBD100A1932F /* PBXTargetDependency */,
 			);
 			name = DreamCatcher;
 			productName = DreamCatcher;
@@ -201,6 +240,7 @@
 		FA31F00B18F4C08C002FD2DB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = "";
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Daniel Wickes";
 				TargetAttributes = {
@@ -220,6 +260,12 @@
 			mainGroup = FA31F00A18F4C08C002FD2DB;
 			productRefGroup = FA31F01418F4C08D002FD2DB /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FA120BF618F5DBBD00A1932F /* Products */;
+					ProjectRef = FA120BF518F5DBBD00A1932F /* CorePlot-CocoaTouch.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				FA31F01218F4C08D002FD2DB /* DreamCatcher */,
@@ -227,6 +273,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FA120BFC18F5DBBE00A1932F /* libCorePlot-CocoaTouch.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libCorePlot-CocoaTouch.a";
+			remoteRef = FA120BFB18F5DBBE00A1932F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FA31F01118F4C08D002FD2DB /* Resources */ = {
@@ -272,6 +328,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		FA120BFE18F5DBD100A1932F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CorePlot-CocoaTouch";
+			targetProxy = FA120BFD18F5DBD100A1932F /* PBXContainerItemProxy */;
+		};
 		FA31F03D18F4C08D002FD2DB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FA31F01218F4C08D002FD2DB /* DreamCatcher */;
@@ -384,7 +445,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DreamCatcher/DreamCatcher-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"/Users/danielwickes/Downloads/CorePlot_1.5.1/Binaries/iOS/CorePlotHeaders\"/**",
+				);
 				INFOPLIST_FILE = "DreamCatcher/DreamCatcher-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -397,7 +465,13 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DreamCatcher/DreamCatcher-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"/Users/danielwickes/Downloads/CorePlot_1.5.1/Binaries/iOS/CorePlotHeaders\"/**",
+				);
 				INFOPLIST_FILE = "DreamCatcher/DreamCatcher-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -462,6 +536,7 @@
 				FA31F04A18F4C08D002FD2DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FA31F04B18F4C08D002FD2DB /* Build configuration list for PBXNativeTarget "DreamCatcherTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +545,7 @@
 				FA31F04D18F4C08D002FD2DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
