@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FA120C0018F5DC3000A1932F /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA120BFC18F5DBBE00A1932F /* libCorePlot-CocoaTouch.a */; };
 		FA120C0418F5DC4100A1932F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA120C0318F5DC4100A1932F /* AVFoundation.framework */; };
 		FA120C0818F5E72800A1932F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA120C0718F5E72800A1932F /* Accelerate.framework */; };
 		FA120C0A18F5E73500A1932F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA120C0918F5E73500A1932F /* QuartzCore.framework */; };
@@ -26,23 +25,12 @@
 		FA31F03B18F4C08D002FD2DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA31F01A18F4C08D002FD2DB /* UIKit.framework */; };
 		FA31F04318F4C08D002FD2DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA31F04118F4C08D002FD2DB /* InfoPlist.strings */; };
 		FA31F04518F4C08D002FD2DB /* DreamCatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA31F04418F4C08D002FD2DB /* DreamCatcherTests.m */; };
+		FA9120BF18FCBE4E00863FF2 /* SleepSession.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9120BE18FCBE4E00863FF2 /* SleepSession.m */; };
+		FA9120C218FCBE6A00863FF2 /* DreamCatcherDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9120C118FCBE6A00863FF2 /* DreamCatcherDBHelper.m */; };
+		FA9120CB18FDA10600863FF2 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9120CA18FDA0E100863FF2 /* libCorePlot-CocoaTouch.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FA120BFB18F5DBBE00A1932F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FA120BF518F5DBBD00A1932F /* CorePlot-CocoaTouch.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA;
-			remoteInfo = "CorePlot-CocoaTouch";
-		};
-		FA120BFD18F5DBD100A1932F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FA120BF518F5DBBD00A1932F /* CorePlot-CocoaTouch.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BC9B83460FB8A0A40035D8DA;
-			remoteInfo = "CorePlot-CocoaTouch";
-		};
 		FA31F03C18F4C08D002FD2DB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA31F00B18F4C08C002FD2DB /* Project object */;
@@ -50,10 +38,23 @@
 			remoteGlobalIDString = FA31F01218F4C08D002FD2DB;
 			remoteInfo = DreamCatcher;
 		};
+		FA9120C918FDA0E100863FF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA9120C318FDA0E000863FF2 /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
+		FA9120CE18FDA14D00863FF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA9120C318FDA0E000863FF2 /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BC9B83460FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FA120BF518F5DBBD00A1932F /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../../Downloads/CorePlot_1.5.1/Source/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 		FA120C0318F5DC4100A1932F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FA120C0718F5E72800A1932F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		FA120C0918F5E73500A1932F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -78,6 +79,11 @@
 		FA31F04018F4C08D002FD2DB /* DreamCatcherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DreamCatcherTests-Info.plist"; sourceTree = "<group>"; };
 		FA31F04218F4C08D002FD2DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FA31F04418F4C08D002FD2DB /* DreamCatcherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DreamCatcherTests.m; sourceTree = "<group>"; };
+		FA9120BD18FCBE4E00863FF2 /* SleepSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SleepSession.h; sourceTree = "<group>"; };
+		FA9120BE18FCBE4E00863FF2 /* SleepSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SleepSession.m; sourceTree = "<group>"; };
+		FA9120C018FCBE6A00863FF2 /* DreamCatcherDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DreamCatcherDBHelper.h; sourceTree = "<group>"; };
+		FA9120C118FCBE6A00863FF2 /* DreamCatcherDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamCatcherDBHelper.m; sourceTree = "<group>"; };
+		FA9120C318FDA0E000863FF2 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../Downloads/CorePlot_1.4/Source/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,10 +91,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA9120CB18FDA10600863FF2 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				FA120C0A18F5E73500A1932F /* QuartzCore.framework in Frameworks */,
 				FA120C0818F5E72800A1932F /* Accelerate.framework in Frameworks */,
 				FA120C0418F5DC4100A1932F /* AVFoundation.framework in Frameworks */,
-				FA120C0018F5DC3000A1932F /* libCorePlot-CocoaTouch.a in Frameworks */,
 				FA31F01918F4C08D002FD2DB /* CoreGraphics.framework in Frameworks */,
 				FA31F01B18F4C08D002FD2DB /* UIKit.framework in Frameworks */,
 				FA31F01718F4C08D002FD2DB /* Foundation.framework in Frameworks */,
@@ -108,18 +114,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FA120BF618F5DBBD00A1932F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FA120BFC18F5DBBE00A1932F /* libCorePlot-CocoaTouch.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		FA31F00A18F4C08C002FD2DB = {
 			isa = PBXGroup;
 			children = (
-				FA120BF518F5DBBD00A1932F /* CorePlot-CocoaTouch.xcodeproj */,
+				FA9120C318FDA0E000863FF2 /* CorePlot-CocoaTouch.xcodeproj */,
 				FA31F01C18F4C08D002FD2DB /* DreamCatcher */,
 				FA31F03E18F4C08D002FD2DB /* DreamCatcherTests */,
 				FA31F01518F4C08D002FD2DB /* Frameworks */,
@@ -162,6 +160,8 @@
 				FA31F02F18F4C08D002FD2DB /* FlipsideViewController.m */,
 				FA31F03118F4C08D002FD2DB /* Images.xcassets */,
 				FA31F01D18F4C08D002FD2DB /* Supporting Files */,
+				FA9120BD18FCBE4E00863FF2 /* SleepSession.h */,
+				FA9120BE18FCBE4E00863FF2 /* SleepSession.m */,
 			);
 			path = DreamCatcher;
 			sourceTree = "<group>";
@@ -173,6 +173,8 @@
 				FA31F01F18F4C08D002FD2DB /* InfoPlist.strings */,
 				FA31F02218F4C08D002FD2DB /* main.m */,
 				FA31F02418F4C08D002FD2DB /* DreamCatcher-Prefix.pch */,
+				FA9120C018FCBE6A00863FF2 /* DreamCatcherDBHelper.h */,
+				FA9120C118FCBE6A00863FF2 /* DreamCatcherDBHelper.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -195,6 +197,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FA9120C418FDA0E000863FF2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA9120CA18FDA0E100863FF2 /* libCorePlot-CocoaTouch.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -209,7 +219,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				FA120BFE18F5DBD100A1932F /* PBXTargetDependency */,
+				FA9120CF18FDA14D00863FF2 /* PBXTargetDependency */,
 			);
 			name = DreamCatcher;
 			productName = DreamCatcher;
@@ -262,8 +272,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = FA120BF618F5DBBD00A1932F /* Products */;
-					ProjectRef = FA120BF518F5DBBD00A1932F /* CorePlot-CocoaTouch.xcodeproj */;
+					ProductGroup = FA9120C418FDA0E000863FF2 /* Products */;
+					ProjectRef = FA9120C318FDA0E000863FF2 /* CorePlot-CocoaTouch.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -275,11 +285,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		FA120BFC18F5DBBE00A1932F /* libCorePlot-CocoaTouch.a */ = {
+		FA9120CA18FDA0E100863FF2 /* libCorePlot-CocoaTouch.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libCorePlot-CocoaTouch.a";
-			remoteRef = FA120BFB18F5DBBE00A1932F /* PBXContainerItemProxy */;
+			remoteRef = FA9120C918FDA0E100863FF2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -311,8 +321,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA31F02718F4C08D002FD2DB /* AppDelegate.m in Sources */,
+				FA9120BF18FCBE4E00863FF2 /* SleepSession.m in Sources */,
 				FA31F02D18F4C08D002FD2DB /* MainViewController.m in Sources */,
 				FA31F03018F4C08D002FD2DB /* FlipsideViewController.m in Sources */,
+				FA9120C218FCBE6A00863FF2 /* DreamCatcherDBHelper.m in Sources */,
 				FA31F02318F4C08D002FD2DB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,15 +340,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FA120BFE18F5DBD100A1932F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "CorePlot-CocoaTouch";
-			targetProxy = FA120BFD18F5DBD100A1932F /* PBXContainerItemProxy */;
-		};
 		FA31F03D18F4C08D002FD2DB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FA31F01218F4C08D002FD2DB /* DreamCatcher */;
 			targetProxy = FA31F03C18F4C08D002FD2DB /* PBXContainerItemProxy */;
+		};
+		FA9120CF18FDA14D00863FF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CorePlot-CocoaTouch";
+			targetProxy = FA9120CE18FDA14D00863FF2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -450,7 +462,12 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"\"/Users/danielwickes/Downloads/CorePlot_1.5.1/Binaries/iOS/CorePlotHeaders\"/**",
 				);
+				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/danielwickes/Downloads/CorePlot_1.4/Binaries/iOS/CorePlotHeaders/**";
 				INFOPLIST_FILE = "DreamCatcher/DreamCatcher-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/DreamCatcher-dzzmvpwqaqraddevatyjvpwqzfqq/Build/Products/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -470,7 +487,16 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"\"/Users/danielwickes/Downloads/CorePlot_1.5.1/Binaries/iOS/CorePlotHeaders\"/**",
 				);
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"/Users/danielwickes/Downloads/CorePlot_1.5.1/Binaries/iOS/CorePlotHeaders\"/**",
+				);
 				INFOPLIST_FILE = "DreamCatcher/DreamCatcher-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/DreamCatcher-dzzmvpwqaqraddevatyjvpwqzfqq/Build/Products/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

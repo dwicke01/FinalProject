@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <sqlite3.h>
 
 @interface DreamCatcherDBHelper : NSObject
+{
+    NSString *databasePath;
+}
++(DreamCatcherDBHelper*)getSharedInstance;
+-(BOOL)createDB;
 
 @end
