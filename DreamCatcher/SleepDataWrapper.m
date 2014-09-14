@@ -6,22 +6,19 @@
 //  Copyright (c) 2014 Daniel Wickes. All rights reserved.
 //
 
-#import "SleepSession.h"
+#import "SleepDataWrapper.h"
 
-@implementation SleepSession
+@implementation SleepDataWrapper 
 
-- (id)init :(long)startTimestamp :(long)endTimestamp :(double)min :(float)calibrationLevel :(int)rating :(long)duration :(int)spikes :(long)fellAsleep :(NSString*)note
+- (id)init :(long)startTimestamp :(long)endTimestamp :(NSMutableArray*) data
 {
     self.startTimestamp = startTimestamp;
-    self.endTimestamp = endTimestamp;
-    self.min = min;
-    self.calibrationLevel = calibrationLevel;
-    self.rating = rating;
-    self.duration = duration;
-    self.spikes = spikes;
-    self.fellAsleepTimestamp = fellAsleep;
-    self.note = note;
+    self.endTimestamp = [[NSDate date]timeIntervalSince1970];
+    self.data = data;
+    self.timezone = [NSTimeZone localTimeZone];
     return self;
 }
+
+
 
 @end

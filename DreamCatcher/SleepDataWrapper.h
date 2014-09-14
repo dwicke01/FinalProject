@@ -7,30 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SleepPoint.h"
 
-
-@interface SleepSession : NSObject
+@interface SleepDataWrapper : NSObject
 
 @property float calibrationLevel;
 
 @property long endTimestamp;
-@property long Id;
-@property NSString *note;
+@property NSMutableArray *data;
 @property NSTimeZone *timezone;
-@property double min;
-@property int rating;
-@property int spikes;
-@property long duration;
-@property long fellAsleepTimestamp;
 @property long startTimestamp;
-@property int startJulianDay;
 
-@property long createdOn;
-@property long updatedOn;
 
-- (id)init :(long)startTimestamp :(long)endTimestamp :(double)min :(float)calibrationLevel :(int)rating :(long)duration :(int)spikes :(long)fellAsleep :(NSString*)note;
+- (id)init :(long)startTimestamp :(long)endTimestamp :(NSMutableArray*) data;
 
-- (long)getStartTimeOfDay;
+
 
 
 @end

@@ -7,7 +7,30 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreMotion/CoreMotion.h>
+#import "SleepPoint.h"
+#import "DreamCatcherDBHelper.h"
+#import <CoreFoundation/CoreFoundation.h>
 
-@interface SleepMonitor : NSObject
+@interface SleepMonitor : NSObject {
+    
+}
+
+
+@property (strong, nonatomic) CMMotionManager *motionManager;
+
+@property NSMutableArray *data;
+@property NSMutableArray *gravity;
+@property NSDate *dateStarted;
+@property NSTimer *timer;
+
+@property int wait;
+@property double maxNetForce;
+
+- (void)start;
+- (void)stop;
+
+- (id)init;
 
 @end
+

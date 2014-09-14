@@ -8,12 +8,25 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
+#import "SleepPoint.h"
+#import "SleepDataWrapper.h"
 
 @interface DreamCatcherDBHelper : NSObject
 {
     NSString *databasePath;
-}
+}/*
 +(DreamCatcherDBHelper*)getSharedInstance;
 -(BOOL)createDB;
+-(void)insertData:(NSString*)startDay :(NSMutableArray *)data;
+*/
++(DreamCatcherDBHelper*)getSharedInstance;
+-(BOOL)createDB;
+-(void)insertData:(SleepDataWrapper*)wrapper;
+-(int)getNumPages;
+-(int)findPage: (int)page;
+-(NSMutableArray*)getData :(int)page;
+
+
+//-(NSMutableArray*)getData;
 
 @end

@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CorePlot-CocoaTouch.h"
+#import "DreamCatcherDBHelper.h"
+#import "SleepDataWrapper.h"
+#import "CorePlot-CocoaTouch.h"
+#import "NimbusPagingScrollView.h"
+#import "NIPagingScrollView.h"
+#import "GraphPageView.h"
 
 @class FlipsideViewController;
 
@@ -15,9 +21,12 @@
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller;
 @end
 
-@interface FlipsideViewController : UIViewController
+@interface FlipsideViewController : UIViewController <NIPagingScrollViewDataSource, NIPagingScrollViewDelegate>
+{
+}
 
 @property (weak, nonatomic) id <FlipsideViewControllerDelegate> delegate;
+@property NSMutableArray *allData;
 
 - (IBAction)done:(id)sender;
 

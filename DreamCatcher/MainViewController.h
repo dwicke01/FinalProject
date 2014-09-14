@@ -8,7 +8,10 @@
 
 #import "FlipsideViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "SleepMonitor.h"
 
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate>
+
+@property SleepMonitor *monitor;
 
 @end

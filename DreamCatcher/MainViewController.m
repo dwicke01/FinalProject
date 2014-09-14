@@ -9,6 +9,8 @@
 #import "MainViewController.h"
 
 @interface MainViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property bool started;
 
 @end
 
@@ -17,17 +19,31 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.started = NO;
+    self.monitor = [[SleepMonitor alloc] init];
+    
 }
 
 - (IBAction)startButton:(id)sender {
-    
+    if (self.started == NO)
+    {
+        [self.monitor start];
+        [self.startButton setTitle:@"Stop" forState:UIControlStateNormal];
+        self.started = YES;
+        [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    }
+    else
+    {
+        [self.monitor stop];
+        [self.startButton setTitle:@"Start" forState:UIControlStateNormal];
+        self.started = NO;
+        [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Flipside View
