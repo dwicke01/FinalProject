@@ -13,14 +13,14 @@
 #import <CoreFoundation/CoreFoundation.h>
 
 @interface SleepMonitor : NSObject {
-    
+    CMAcceleration gravity;
 }
 
 
 @property (strong, nonatomic) CMMotionManager *motionManager;
 
 @property NSMutableArray *data;
-@property NSMutableArray *gravity;
+//@property NSMutableArray *gravity;
 @property NSDate *dateStarted;
 @property NSTimer *timer;
 
