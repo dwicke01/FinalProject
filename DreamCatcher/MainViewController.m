@@ -11,6 +11,7 @@
 @interface MainViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property bool started;
+@property (weak, nonatomic) IBOutlet UIButton *flipButton;
 
 @end
 
@@ -30,6 +31,7 @@
         [self.monitor start];
         [self.startButton setTitle:@"Stop" forState:UIControlStateNormal];
         self.started = YES;
+        self.flipButton.enabled = NO;
         [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     }
     else
@@ -38,6 +40,7 @@
         [self.startButton setTitle:@"Start" forState:UIControlStateNormal];
         self.started = NO;
         [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+        self.flipButton.enabled = YES;
     }
 }
 
@@ -45,6 +48,7 @@
 {
     [super didReceiveMemoryWarning];
 }
+
 
 #pragma mark - Flipside View
 

@@ -27,34 +27,37 @@
             [self.yValues addObject:[data objectAtIndex:i]];
     }
     
+    for (NSNumber* x in self.xValues)
+        NSLog(@"%f", [x doubleValue]);
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"YYYY:MM:dd"];
-    float x1 = [[self.xValues objectAtIndex:0] floatValue];
+    double x1 = [[self.xValues objectAtIndex:0] doubleValue];
     NSDate *xDate = [[NSDate alloc]initWithTimeIntervalSince1970:x1];
     NSString *formattedDateString = [dateFormatter stringFromDate:xDate];
     self.graph.title = formattedDateString;
 }
 
-- (float)findMin:(NSMutableArray*) arr
+- (double)findMin:(NSMutableArray*) arr
 {
-    float min = [[arr objectAtIndex:0] floatValue];
+    double min = [[arr objectAtIndex:0] floatValue];
     
     for (NSNumber *n in arr)
     {
-        if ([n floatValue] < min)
-            min = [n floatValue];
+        if ([n doubleValue] < min)
+            min = [n doubleValue];
     }
     return min;
 }
 
-- (float)findMax:(NSMutableArray*) arr
+- (double)findMax:(NSMutableArray*) arr
 {
-    float max = 0;
+    double max = 0;
     
     for (NSNumber *n in arr)
     {
-        if ([n floatValue] > max)
-            max = [n floatValue];
+        if ([n doubleValue] > max)
+            max = [n doubleValue];
     }
     return max;
 }
@@ -67,8 +70,9 @@
         [self fillXAndYValues];
 
         self.pageIndex = pageNumber;
+        double adjustment = MAX([self yAxisIntervalLength]/5, .0005);
         
-        self.graph = [self makeGraph:0 :[self findMax:self.yValues] :[self findMin:self.xValues] :[self findMax:self.xValues] :self.frame];
+        [self makeGraph:0 :[self findMax:self.yValues]+adjustment:[(NSNumber*)[self.xValues objectAtIndex:0] doubleValue] :[(NSNumber*)[self.xValues objectAtIndex:[self.xValues count]-1] doubleValue]  :self.frame];
 
         
         self.hostedGraph = self.graph;
@@ -76,25 +80,32 @@
         self.allowPinchScaling = YES;
         self.userInteractionEnabled = YES;
     }
+
     return self;
 }
 
 
 - (void)setPageIndex:(NSInteger)pageIndex {
     _pageIndex = pageIndex;
+    
     [self fillXAndYValues];
-    self.graph = [self makeGraph:0 :[self findMax:self.yValues] :[self findMin:self.xValues] :[self findMax:self.xValues] :self.frame];
+    
+    if (self.graph == nil)
+    {
+        double adjustment = MAX([self yAxisIntervalLength]/5, .0005);
+        [self makeGraph:0 :[self findMax:self.yValues]+adjustment:[(NSNumber*)[self.xValues objectAtIndex:0] doubleValue] :[(NSNumber*)[self.xValues objectAtIndex:[self.xValues count]-1] doubleValue] :self.frame];
+    }
     [self setNeedsLayout];
 }
 
--(CPTGraph*) makeGraph :(float)yStart :(float)yLength :(float)xStart :(float)xLength :(CGRect)frame
+-(void) makeGraph :(double)yStart :(double)yMax :(double)xStart :(double)xMax :(CGRect)frame
 {
-    CPTGraph* graph = [[CPTXYGraph alloc] initWithFrame:frame];
+    self.graph = [[CPTXYGraph alloc] initWithFrame:frame];
     
-    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
+    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)self.graph.defaultPlotSpace;
     
-    [plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( yStart ) length:CPTDecimalFromFloat( yLength )]];
-    [plotSpace setXRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( xStart ) length:CPTDecimalFromFloat( xLength-xStart )]];
+    [plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble( 0 ) length:CPTDecimalFromDouble( yMax )]];
+    [plotSpace setXRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble( xStart ) length:CPTDecimalFromDouble( xMax-xStart )]];
     
     CPTScatterPlot* plot = [[CPTScatterPlot alloc] initWithFrame:CGRectZero];
     
@@ -107,14 +118,12 @@
     style.lineColor = myColor;
     plot.dataLineStyle = style;
     
-    [graph addPlot:plot toPlotSpace:graph.defaultPlotSpace];
+    [self.graph addPlot:plot toPlotSpace:self.graph.defaultPlotSpace];
     
-    [graph.plotAreaFrame setPaddingLeft:40.0f];
-    [graph.plotAreaFrame setPaddingBottom:40.0f];
+    [self.graph.plotAreaFrame setPaddingLeft:40.0f];
+    [self.graph.plotAreaFrame setPaddingBottom:20.0f];
     
-    graph = [self configureAxes:graph];
-    
-    return graph;
+    [self configureAxes];
 }
 
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plotnumberOfRecords {
@@ -126,54 +135,109 @@
     if(fieldEnum == CPTScatterPlotFieldX)
     {
         // Return x value
-        return [NSNumber numberWithFloat: [[self.xValues objectAtIndex:index] floatValue]];
+        return [NSNumber numberWithDouble: [[self.xValues objectAtIndex:index] doubleValue]];
     } else {
         // Return y value
-        return [NSNumber numberWithFloat: [[self.yValues objectAtIndex:index] floatValue]];
+        return [NSNumber numberWithDouble: [[self.yValues objectAtIndex:index] doubleValue]];
     }
 }
 
--(CPTGraph*)configureAxes :(CPTGraph*)graph {
+-(double)yAxisIntervalLength{
+    double length = [self findMax:[self yValues]] - [self findMin:[self yValues]];
+    return length/5;
+}
+
+-(double)xAxisIntervalLength :(double)numTicks{
+    double length = [self findMax:[self xValues]] - [self findMin:[self xValues]];
+    return length/numTicks;
+}
+
+
+-(void)configureAxes {
     
-    CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
+    CPTXYAxisSet *axisSet = (CPTXYAxisSet *)self.graph.axisSet;
+    double xMin = [(NSNumber*)[self.xValues objectAtIndex:0] doubleValue];  //[self findMin:self.xValues];
+    double xMax = [(NSNumber*)[self.xValues objectAtIndex:[self.xValues count]-1]doubleValue];
+    double yMax = [self findMax:self.yValues];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"hh:mma"];
+    if (xMax - xMin < 300)
+        [dateFormatter setDateFormat:@"hh:mm:ssa"];
+    else
+        [dateFormatter setDateFormat:@"hh:mma"];
     
     CPTTimeFormatter *timeFormatter = [[CPTTimeFormatter alloc]initWithDateFormatter:dateFormatter];
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc]init];
-    [numberFormatter setMaximumFractionDigits:2];
+    [numberFormatter setMaximumFractionDigits:4];
     [numberFormatter setMinimumFractionDigits:2];
     
-    axisSet.yAxis.majorIntervalLength = [[NSDecimalNumber decimalNumberWithDecimal:CPTDecimalFromDouble(.005)] decimalValue];
-    
     axisSet.yAxis.labelFormatter = numberFormatter;
-    axisSet.yAxis.minorTicksPerInterval = 1;
-    axisSet.yAxis.minorTickLength = 5.0f;
-    axisSet.yAxis.majorTickLength = 7.0f;
-    axisSet.yAxis.labelOffset = 3.0f;
-    axisSet.yAxis.orthogonalCoordinateDecimal = CPTDecimalFromFloat([self findMin:self.xValues]);
-    axisSet.yAxis.labelingPolicy = CPTAxisLabelingPolicyAutomatic;
-
+    axisSet.yAxis.minorTicksPerInterval = 0;
+    axisSet.yAxis.majorTickLength = 5.0f;
+    axisSet.yAxis.labelOffset = 1.0f;
+    axisSet.yAxis.orthogonalCoordinateDecimal = CPTDecimalFromDouble(xMin);
+    axisSet.yAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
+    axisSet.yAxis.title = @"Movements";
+    axisSet.yAxis.titleOffset = 20.0f;
+    
+    CGFloat yLabelCount = 5;
+    NSMutableSet *yLabels = [NSMutableSet setWithCapacity:yLabelCount];
+    NSMutableSet *yLocations = [NSMutableSet setWithCapacity:yLabelCount];
+    double i = .02;
+    for (i=0; i < yMax+.005; i+=yMax/5) {
+        CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[numberFormatter stringFromNumber:[NSNumber numberWithDouble:i]] textStyle:axisSet.yAxis.labelTextStyle];
+        label.tickLocation = CPTDecimalFromDouble(i);
+        label.offset = 1.0f;
+        if (label) {
+            [yLabels addObject:label];
+            [yLocations addObject:[NSNumber numberWithDouble:i]];
+        }
+    }
+    axisSet.yAxis.axisLabels = yLabels;
+    axisSet.yAxis.labelFormatter = numberFormatter;
+    axisSet.yAxis.majorTickLocations = yLocations;
+    
     axisSet.xAxis.labelFormatter = timeFormatter;
     
     CPTMutableTextStyle *xAxisTextStyle = [CPTMutableTextStyle textStyle];
     xAxisTextStyle.color = [[CPTColor blackColor] colorWithAlphaComponent:1];
     xAxisTextStyle.fontName = @"Helvetica-Bold";
-    xAxisTextStyle.fontSize = 7.0f;
+    xAxisTextStyle.fontSize = 8.0f;
     
     axisSet.xAxis.labelTextStyle = xAxisTextStyle;
+    axisSet.yAxis.labelTextStyle = xAxisTextStyle;
     
-    axisSet.xAxis.majorIntervalLength = CPTDecimalFromDouble(([self findMax:self.xValues]-[self findMin:self.yValues])/5);
     axisSet.xAxis.minorTicksPerInterval = 0;
     axisSet.xAxis.minorTickLength = 5.0f;
     axisSet.xAxis.majorTickLength = 7.0f;
     axisSet.xAxis.labelOffset = 3.0f;
+    axisSet.xAxis.orthogonalCoordinateDecimal = CPTDecimalFromDouble(0);
+
+    axisSet.xAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
     
-    axisSet.xAxis.labelingPolicy = CPTAxisLabelingPolicyAutomatic;
+    double xTickCount = ([[self xValues] count]>=5)?5:[[self xValues] count];
+    NSMutableSet *xLabels = [NSMutableSet setWithCapacity:xTickCount];
+    NSMutableSet *xLocations = [NSMutableSet setWithCapacity:xTickCount];
+    NSLog(@"xMin is %@", [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:xMin]]);
+    axisSet.xAxis.majorIntervalLength = CPTDecimalFromDouble([self xAxisIntervalLength:xTickCount]);
     
-    return graph;
+    for (double i = xMin; i < xMax; i+=(xMax-xMin)/xTickCount) {
+        NSLog(@"i is %@", [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:i]]);
+        CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:i]] textStyle:axisSet.xAxis.labelTextStyle];
+        label.tickLocation = CPTDecimalFromDouble(i);
+        label.offset = 3.0f;
+        if (label) {
+            [xLabels addObject:label];
+            [xLocations addObject:[NSNumber numberWithFloat:i]];
+        }
+    }
+    
+    axisSet.xAxis.axisLabels = xLabels;
+    axisSet.xAxis.labelFormatter = dateFormatter;
+    axisSet.xAxis.majorTickLocations = xLocations;
+
+    self.graph.axisSet = axisSet;
 }
 
 @end

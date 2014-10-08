@@ -29,7 +29,6 @@ static NSString* const kPageReuseIdentifier = @"GraphPageIdentifier";
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
-    
 
     self.pagingScrollView.autoresizingMask = UIViewAutoresizingFlexibleDimensions;
     

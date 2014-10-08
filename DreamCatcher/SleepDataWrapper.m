@@ -10,7 +10,7 @@
 
 @implementation SleepDataWrapper 
 
-- (id)init :(long)startTimestamp :(long)endTimestamp :(NSMutableArray*) data
+- (id)init :(double)startTimestamp :(double)endTimestamp :(NSMutableArray*) data
 {
     self.startTimestamp = startTimestamp;
     self.endTimestamp = [[NSDate date]timeIntervalSince1970];

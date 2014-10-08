@@ -10,10 +10,10 @@
 
 @interface SleepPoint : NSObject
 
-@property float x;
-@property float y;
+@property double x;
+@property double y;
 
--(id) init :(float)x :(float)y;
+-(id) init :(double)x :(double)y;
 
 
 @end

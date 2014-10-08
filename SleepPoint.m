@@ -10,7 +10,7 @@
 
 @implementation SleepPoint
 
--(id) init :(float)x :(float)y
+-(id) init :(double)x :(double)y
 {
     self.x = x;
     self.y = y;

@@ -14,18 +14,17 @@
 
 @interface SleepMonitor : NSObject {
     CMAcceleration gravity;
+    double maxNetForce;
+    int wait;
+    NSTimer *timer;
 }
 
 
 @property (strong, nonatomic) CMMotionManager *motionManager;
 
 @property NSMutableArray *data;
-//@property NSMutableArray *gravity;
-@property NSDate *dateStarted;
-@property NSTimer *timer;
+//@property NSTimer *timer;
 
-@property int wait;
-@property double maxNetForce;
 
 - (void)start;
 - (void)stop;

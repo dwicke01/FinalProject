@@ -11,15 +11,13 @@
 
 @interface SleepDataWrapper : NSObject
 
-@property float calibrationLevel;
-
-@property long endTimestamp;
+@property double endTimestamp;
 @property NSMutableArray *data;
 @property NSTimeZone *timezone;
-@property long startTimestamp;
+@property double startTimestamp;
 
 
-- (id)init :(long)startTimestamp :(long)endTimestamp :(NSMutableArray*) data;
+- (id)init :(double)startTimestamp :(double)endTimestamp :(NSMutableArray*) data;
 
 
 
